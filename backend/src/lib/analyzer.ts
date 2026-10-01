@@ -345,7 +345,7 @@ export function analyze(events: ChaosEvent[], scenarios: Scenario[]): Analysis {
           {
             type: "client_crash",
             severity: o.fault && ["missing_fields", "wrong_types", "schema_drift", "malformed_json"].includes(o.fault) ? "high" : "high",
-            title: `Client failed on ${o.fault ? FAULTS[o.fault]?.label ?? o.fault : "an injected fault"}`,
+            title: `Client failed on ${o.fault ? FAULTS[o.fault]?.label ?? o.fault : "a degraded response"}`,
             detail: `The client reported an unhandled failure on ${o.endpointKey ?? o.path}: ${o.outcome?.detail ?? "no detail"}.`,
             recommendation: "Validate responses at the boundary, catch parse errors, and render fallback/cached UI instead of crashing.",
             endpointKey: o.endpointKey ?? o.path,
