@@ -1,0 +1,26 @@
+{
+  "name": "chaoslab-video",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "probe": "node scripts/probe.mjs",
+    "render": "bash render.sh"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.531",
+    "@remotion/cli": "^4.0.531",
+    "@remotion/google-fonts": "^4.0.531",
+    "@remotion/media-utils": "^4.0.531",
+    "@remotion/renderer": "^4.0.531",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "^4.0.531"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "hyperframes": "^0.8.99",
+    "typescript": "^7.0.2"
+  }
+}

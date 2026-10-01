@@ -1,0 +1,15 @@
+{
+  "name": "api-chaos-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "API Chaos Lab — AI-powered API resilience testing",
+  "scripts": {
+    "build": "node scripts/build-vercel.mjs",
+    "dev:api": "npm --prefix backend run dev",
+    "dev:web": "npm --prefix web run dev"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

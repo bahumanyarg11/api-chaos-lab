@@ -1,0 +1,9 @@
+{
+  "liveUrl": "chaoslab.app",
+  "voice": "Samantha",
+  "voiceRate": 185,
+  "musicVolumeDb": -24,
+  "scenePaddingSec": 0.6,
+  "playbackRateMin": 0.75,
+  "playbackRateMax": 1.6
+}

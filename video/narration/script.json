@@ -1,0 +1,70 @@
+[
+  {
+    "scene": "intro",
+    "text": "Your app works... until the API doesn't. Timeouts. Rate limits. Broken JSON."
+  },
+  {
+    "scene": "problem",
+    "text": "Faking those failures by hand is tedious, so most teams never test their failure paths. Then production tests them instead: retry storms that hammer a struggling service, and double charges on POST /payments.",
+    "speak": "Faking those failures by hand is tedious, so most teams never test their failure paths. Then production tests them instead: retry storms that hammer a struggling service, and double charges on post payments."
+  },
+  {
+    "scene": "solution",
+    "text": "Meet API Chaos Lab. Paste your OpenAPI spec. Amazon Bedrock understands what each endpoint actually does, and generates a chaos matrix of realistic faults, tailored to your API.",
+    "speak": "Meet A P I Chaos Lab. Paste your Open A P I spec. Amazon Bedrock understands what each endpoint actually does, and generates a chaos matrix of realistic faults, tailored to your A P I."
+  },
+  {
+    "scene": "demo-landing",
+    "rec": "01-landing.mp4",
+    "text": "Here's the real app, running on AWS. Create a project in a few seconds.",
+    "speak": "Here's the real app, running on A W S. Create a project in a few seconds."
+  },
+  {
+    "scene": "demo-upload",
+    "rec": "02-upload.mp4",
+    "text": "Upload a spec. ChaosLab parses every endpoint, and Bedrock reasons about payments, auth, and idempotency.",
+    "speak": "Upload a spec. Chaos Lab parses every endpoint, and Bedrock reasons about payments, auth, and idempotency."
+  },
+  {
+    "scene": "demo-matrix",
+    "rec": "03-matrix.mp4",
+    "text": "The AI chaos matrix maps every endpoint against every fault: latency, timeouts, 429s with Retry-After, schema drift. Toggle any cell.",
+    "speak": "The A I chaos matrix maps every endpoint against every fault: latency, timeouts, four twenty-nines with retry after, schema drift. Toggle any cell."
+  },
+  {
+    "scene": "demo-live",
+    "rec": "04-live.mp4",
+    "text": "Point your app at the chaos endpoint, and watch live traffic as faults are injected in real time."
+  },
+  {
+    "scene": "demo-playground",
+    "rec": "05-playground.mp4",
+    "text": "In the playground, a naive client and a resilient client face the exact same chaos, side by side."
+  },
+  {
+    "scene": "differentiator",
+    "text": "Here's the difference. ChaosLab doesn't just inject faults. It watches how your client behaves under failure, from the server side. Retry storms with no backoff. Retry-After, ignored. A POST retried without an Idempotency-Key: double-charge risk. The naive client scores an F. The resilient one, an A.",
+    "speak": "Here's the difference. Chaos Lab doesn't just inject faults. It watches how your client behaves under failure, from the server side. Retry storms, with no backoff. Retry after, ignored. A post, retried without an idempotency key: double-charge risk. The naive client scores an F. The resilient one, an A."
+  },
+  {
+    "scene": "demo-report",
+    "rec": "06-report.mp4",
+    "text": "Every run ends in a resilience report: a score, each finding explained by Bedrock, and the code to fix it."
+  },
+  {
+    "scene": "demo-integrate",
+    "rec": "07-integrate.mp4",
+    "text": "Integration is one line: swap your base URL for the chaos endpoint, or run it straight from CI.",
+    "speak": "Integration is one line: swap your base U R L for the chaos endpoint, or run it straight from C I."
+  },
+  {
+    "scene": "architecture",
+    "text": "Under the hood, it's serverless on AWS. CloudFront and S3 serve the app. API Gateway fronts Lambda functions for the control plane, the chaos data plane, and an AI worker. State lives in DynamoDB and S3, Amazon Bedrock powers the analysis, and CloudWatch tracks every fault. In CI, one command runs your tests against chaos, and gates the build.",
+    "speak": "Under the hood, it's serverless on A W S. CloudFront and S3 serve the app. A P I Gateway fronts Lambda functions for the control plane, the chaos data plane, and an A I worker. State lives in Dynamo D B and S3, Amazon Bedrock powers the analysis, and CloudWatch tracks every fault. In C I, one command runs your tests against chaos, and gates the build."
+  },
+  {
+    "scene": "outro",
+    "text": "Break your APIs before your users do. API Chaos Lab.",
+    "speak": "Break your A P Is before your users do. A P I Chaos Lab."
+  }
+]

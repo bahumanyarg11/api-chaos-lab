@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.vercel/
+cdk.out/
+.local/
+.env
+.env.*
+*.log
+.DS_Store
+backend/cdk-outputs.json
+scripts/.rec-tmp/
+video/out/*.mov
+video/node_modules/
+video/.remotion/
+.vercel
+video/out/

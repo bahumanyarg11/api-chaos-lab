@@ -1,0 +1,159 @@
+<!doctype html>
+<html
+  lang="en"
+  data-composition-variables='[{"id":"liveUrl","type":"string","label":"Live URL (from video/config.json)","default":"chaoslab.app"}]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>ChaosLab outro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=block"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --bg: #07070b; --surface: #0f0f17; --raised: #161622; --border: #25253a;
+        --text: #f4f4f8; --muted: #a1a1b5; --red: #ff3d5a; --orange: #ff8a00; --violet: #b14dff; --mint: #22d3a5;
+        --chaos: linear-gradient(90deg, #ff3d5a 0%, #ff8a00 50%, #b14dff 100%);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+      body { font-family: "Inter", ui-sans-serif, system-ui, sans-serif; color: var(--text); -webkit-font-smoothing: antialiased; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+      .clip { position: absolute; inset: 0; }
+
+      #bg { background: radial-gradient(1100px 640px at 50% 42%, rgba(177, 77, 255, 0.13), transparent 62%),
+                        radial-gradient(800px 420px at 50% 70%, rgba(255, 61, 90, 0.10), transparent 60%), var(--bg); }
+      #matrix { position: absolute; left: 50%; top: 50%; width: 1760px; height: 900px; margin: -450px 0 0 -880px;
+        display: grid; grid-template-columns: repeat(16, 1fr); grid-template-rows: repeat(8, 1fr); gap: 14px;
+        -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, transparent 25%, #000 60%, transparent 92%);
+        mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, transparent 25%, #000 60%, transparent 92%); }
+      #matrix .cell { border-radius: 10px; border: 1px solid rgba(37, 37, 58, 0.9); background: rgba(15, 15, 23, 0.9); }
+      #matrix .cell.hot { background: var(--chaos); border-color: transparent; }
+
+      #stack { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      .h { font-weight: 800; font-size: 132px; letter-spacing: -0.05em; line-height: 1.02; white-space: nowrap; }
+      .h .w { display: inline-block; }
+      #h2 .w { background: var(--chaos); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: 8px; }
+      #brand { margin-top: 70px; display: flex; align-items: center; gap: 22px; }
+      #mark { width: 64px; height: 64px; }
+      #name { font-weight: 800; font-size: 46px; letter-spacing: -0.04em; }
+      #name .grad { background: var(--chaos); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      #sep { width: 1px; height: 46px; background: var(--border); margin: 0 10px; }
+      #urlPill { display: flex; align-items: center; gap: 16px; padding: 16px 26px 16px 22px; border-radius: 16px;
+        background: rgba(22, 22, 34, 0.9); border: 1px solid var(--border);
+        box-shadow: 0 0 0 1px rgba(255, 138, 0, 0.08), 0 20px 60px rgba(0, 0, 0, 0.5); }
+      #urlPill .lock { width: 14px; height: 14px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 14px var(--mint); }
+      #url { font: 600 40px/1 "JetBrains Mono", monospace; letter-spacing: -0.02em; color: var(--text); }
+      #caret { width: 3px; height: 40px; background: var(--orange); }
+      #foot { margin-top: 44px; font: 500 22px/1 "JetBrains Mono", monospace; color: var(--muted); letter-spacing: 0.04em; }
+      #foot b { color: var(--text); font-weight: 600; }
+      #fade { background: #000; opacity: 0; }
+      #scan { background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 4px); mix-blend-mode: overlay; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="outro" data-start="0" data-duration="8" data-width="1920" data-height="1080" data-fps="30">
+      <div id="bg" class="clip" data-start="0" data-duration="8" data-track-index="0">
+        <div id="matrix"></div>
+      </div>
+
+      <div id="stack" class="clip" data-start="0" data-duration="8" data-track-index="1">
+        <div id="h1" class="h"><span class="w">Break</span> <span class="w">your</span> <span class="w">APIs</span></div>
+        <div id="h2" class="h"><span class="w">before</span> <span class="w">your</span> <span class="w">users</span> <span class="w">do.</span></div>
+        <div id="brand">
+          <svg id="mark" viewBox="0 0 148 148">
+            <defs>
+              <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#FF3D5A" /><stop offset="0.5" stop-color="#FF8A00" /><stop offset="1" stop-color="#B14DFF" />
+              </linearGradient>
+            </defs>
+            <rect x="3" y="3" width="142" height="142" rx="36" fill="#0F0F17" stroke="url(#cg)" stroke-width="6" />
+            <g fill="#2B2B44">
+              <rect x="30" y="30" width="24" height="24" rx="6" /><rect x="62" y="30" width="24" height="24" rx="6" /><rect x="94" y="30" width="24" height="24" rx="6" />
+              <rect x="30" y="62" width="24" height="24" rx="6" /><rect x="94" y="62" width="24" height="24" rx="6" />
+              <rect x="30" y="94" width="24" height="24" rx="6" /><rect x="62" y="94" width="24" height="24" rx="6" /><rect x="94" y="94" width="24" height="24" rx="6" />
+            </g>
+            <rect x="62" y="62" width="24" height="24" rx="6" fill="url(#cg)" />
+          </svg>
+          <div id="name">API <span class="grad">Chaos</span> Lab</div>
+          <div id="sep"></div>
+          <div id="urlPill"><span class="lock"></span><span id="url">{{LIVE_URL}}</span><span id="caret"></span></div>
+        </div>
+        <div id="foot">Serverless on <b>AWS</b> · AI by <b>Amazon Bedrock</b></div>
+      </div>
+
+      <div id="scan" class="clip" data-start="0" data-duration="8" data-track-index="2"></div>
+      <div id="fade" class="clip" data-start="0" data-duration="8" data-track-index="3"></div>
+    </div>
+
+    <script>
+      // {{LIVE_URL}} is replaced from the `liveUrl` variable (render.sh passes video/config.json → --variables-file).
+      const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+      const urlEl = document.getElementById("url");
+      urlEl.textContent = String(vars.liveUrl || "chaoslab.app").replace(/^https?:\/\//, "");
+
+      function mulberry32(a) {
+        return function () {
+          a |= 0; a = (a + 0x6d2b79f5) | 0;
+          let t = Math.imul(a ^ (a >>> 15), 1 | a);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+      const rnd = mulberry32(42);
+      const matrix = document.getElementById("matrix");
+      const cells = [];
+      for (let i = 0; i < 16 * 8; i++) {
+        const c = document.createElement("div");
+        const col = i % 16, row = Math.floor(i / 16);
+        const nearText = row >= 1 && row <= 6 && col >= 2 && col <= 13; // keep the headline area calm
+        c.className = "cell" + (!nearText && rnd() < 0.22 ? " hot" : "");
+        matrix.appendChild(c);
+        cells.push(c);
+      }
+
+      const tl = gsap.timeline({ paused: true });
+      // matrix wave
+      cells.forEach((c, i) => {
+        const col = i % 16, row = Math.floor(i / 16);
+        const d = Math.hypot(col - 7.5, (row - 3.5) * 1.6);
+        tl.fromTo(c, { opacity: 0, scale: 0.6 }, { opacity: c.classList.contains("hot") ? 0.55 : 1, scale: 1, duration: 0.6, ease: "expo.out" }, 0.1 + d * 0.06);
+        if (c.classList.contains("hot")) {
+          tl.to(c, { opacity: 0.15, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1.2 + rnd() * 1.5);
+        }
+      });
+      tl.fromTo("#matrix", { scale: 1.04 }, { scale: 1, duration: 8, ease: "none" }, 0);
+
+      // headline
+      tl.fromTo("#h1 .w", { opacity: 0, y: 70, filter: "blur(12px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, stagger: 0.09, ease: "expo.out" }, 0.25);
+      tl.fromTo("#h2 .w", { opacity: 0, y: 70, filter: "blur(12px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, stagger: 0.09, ease: "expo.out" }, 0.85);
+      // a single RGB glitch on "users"
+      const users = document.querySelectorAll("#h2 .w")[2];
+      for (let f = 0; f < 5; f++) {
+        tl.set(users, { x: (rnd() - 0.5) * 18, filter: `drop-shadow(${-3 - rnd() * 6}px 0 rgba(255,61,90,0.95)) drop-shadow(${3 + rnd() * 6}px 0 rgba(77,163,255,0.9))` }, 1.9 + f / 30);
+      }
+      tl.set(users, { x: 0, filter: "none" }, 1.9 + 5 / 30);
+
+      // brand + URL
+      tl.fromTo("#brand", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, 2.3);
+      tl.fromTo("#mark", { rotation: -25, scale: 0.6 }, { rotation: 0, scale: 1, duration: 0.8, ease: "back.out(1.8)" }, 2.3);
+      tl.fromTo("#urlPill", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 2.6);
+      for (let i = 0; i < 9; i++) tl.set("#caret", { opacity: i % 2 ? 1 : 0 }, 2.6 + i * 0.5);
+      tl.fromTo("#foot", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 3.2);
+      tl.fromTo("#stack", { scale: 1 }, { scale: 1.025, duration: 8, ease: "none" }, 0);
+
+      // fade to black
+      tl.to("#fade", { opacity: 1, duration: 0.8, ease: "power2.in" }, 7.2);
+      tl.to({}, { duration: 0.01 }, 7.99);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["outro"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

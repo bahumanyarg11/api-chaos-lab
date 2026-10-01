@@ -1,0 +1,288 @@
+{
+  "generatedAt": "2026-10-01T04:17:00.851Z",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "totalFrames": 4430,
+  "totalSec": 147.67,
+  "liveUrl": "chaoslab.app",
+  "musicVolumeDb": -24,
+  "scenes": [
+    {
+      "id": "intro",
+      "from": 0,
+      "frames": 300,
+      "vo": {
+        "file": "vo/intro.wav",
+        "offset": 12,
+        "frames": 166
+      },
+      "hf": {
+        "file": "hf/intro.mp4",
+        "frames": 300
+      }
+    },
+    {
+      "id": "problem",
+      "from": 300,
+      "frames": 404,
+      "vo": {
+        "file": "vo/problem.wav",
+        "offset": 9,
+        "frames": 360
+      }
+    },
+    {
+      "id": "solution",
+      "from": 704,
+      "frames": 407,
+      "vo": {
+        "file": "vo/solution.wav",
+        "offset": 9,
+        "frames": 345
+      }
+    },
+    {
+      "id": "demo-landing",
+      "from": 1111,
+      "frames": 225,
+      "vo": {
+        "file": "vo/demo-landing.wav",
+        "offset": 9,
+        "frames": 134
+      },
+      "rec": {
+        "file": "rec/01-landing.mp4",
+        "durationSec": 12,
+        "size": {
+          "width": 1600,
+          "height": 1000
+        },
+        "playbackRate": 1.6,
+        "playFrames": 225,
+        "freezeFrames": 0,
+        "trimmedSec": 0
+      }
+    },
+    {
+      "id": "demo-upload",
+      "from": 1336,
+      "frames": 227,
+      "vo": {
+        "file": "vo/demo-upload.wav",
+        "offset": 9,
+        "frames": 201
+      },
+      "rec": {
+        "file": "rec/02-upload.mp4",
+        "durationSec": 12,
+        "size": {
+          "width": 1600,
+          "height": 1000
+        },
+        "playbackRate": 1.5842,
+        "playFrames": 227,
+        "freezeFrames": 0,
+        "trimmedSec": 0.01
+      }
+    },
+    {
+      "id": "demo-matrix",
+      "from": 1563,
+      "frames": 328,
+      "vo": {
+        "file": "vo/demo-matrix.wav",
+        "offset": 9,
+        "frames": 287
+      },
+      "rec": {
+        "file": "rec/03-matrix.mp4",
+        "durationSec": 12,
+        "size": {
+          "width": 1600,
+          "height": 1000
+        },
+        "playbackRate": 1.0974,
+        "playFrames": 328,
+        "freezeFrames": 0,
+        "trimmedSec": 0
+      }
+    },
+    {
+      "id": "demo-live",
+      "from": 1891,
+      "frames": 225,
+      "vo": {
+        "file": "vo/demo-live.wav",
+        "offset": 9,
+        "frames": 157
+      },
+      "rec": {
+        "file": "rec/04-live.mp4",
+        "durationSec": 12,
+        "size": {
+          "width": 1600,
+          "height": 1000
+        },
+        "playbackRate": 1.6,
+        "playFrames": 225,
+        "freezeFrames": 0,
+        "trimmedSec": 0
+      }
+    },
+    {
+      "id": "demo-playground",
+      "from": 2116,
+      "frames": 225,
+      "vo": {
+        "file": "vo/demo-playground.wav",
+        "offset": 9,
+        "frames": 183
+      },
+      "rec": {
+        "file": "rec/05-playground.mp4",
+        "durationSec": 12,
+        "size": {
+          "width": 1600,
+          "height": 1000
+        },
+        "playbackRate": 1.6,
+        "playFrames": 225,
+        "freezeFrames": 0,
+        "trimmedSec": 0
+      }
+    },
+    {
+      "id": "differentiator",
+      "from": 2341,
+      "frames": 663,
+      "vo": {
+        "file": "vo/differentiator.wav",
+        "offset": 9,
+        "frames": 582
+      }
+    },
+    {
+      "id": "demo-report",
+      "from": 3004,
+      "frames": 225,
+      "vo": {
+        "file": "vo/demo-report.wav",
+        "offset": 9,
+        "frames": 184
+      },
+      "rec": {
+        "file": "rec/06-report.mp4",
+        "durationSec": 12,
+        "size": {
+          "width": 1600,
+          "height": 1000
+        },
+        "playbackRate": 1.6,
+        "playFrames": 225,
+        "freezeFrames": 0,
+        "trimmedSec": 0
+      }
+    },
+    {
+      "id": "demo-integrate",
+      "from": 3229,
+      "frames": 225,
+      "vo": {
+        "file": "vo/demo-integrate.wav",
+        "offset": 9,
+        "frames": 179
+      },
+      "rec": {
+        "file": "rec/07-integrate.mp4",
+        "durationSec": 12,
+        "size": {
+          "width": 1600,
+          "height": 1000
+        },
+        "playbackRate": 1.6,
+        "playFrames": 225,
+        "freezeFrames": 0,
+        "trimmedSec": 0
+      }
+    },
+    {
+      "id": "architecture",
+      "from": 3454,
+      "frames": 736,
+      "vo": {
+        "file": "vo/architecture.wav",
+        "offset": 9,
+        "frames": 662
+      }
+    },
+    {
+      "id": "outro",
+      "from": 4190,
+      "frames": 240,
+      "vo": {
+        "file": "vo/outro.wav",
+        "offset": 11,
+        "frames": 116
+      },
+      "hf": {
+        "file": "hf/outro.mp4",
+        "frames": 240
+      }
+    }
+  ],
+  "voIntervals": [
+    [
+      12,
+      178
+    ],
+    [
+      309,
+      669
+    ],
+    [
+      713,
+      1058
+    ],
+    [
+      1120,
+      1254
+    ],
+    [
+      1345,
+      1546
+    ],
+    [
+      1572,
+      1859
+    ],
+    [
+      1900,
+      2057
+    ],
+    [
+      2125,
+      2308
+    ],
+    [
+      2350,
+      2932
+    ],
+    [
+      3013,
+      3197
+    ],
+    [
+      3238,
+      3417
+    ],
+    [
+      3463,
+      4125
+    ],
+    [
+      4201,
+      4317
+    ]
+  ]
+}

@@ -1,0 +1,9 @@
+node_modules
+**/node_modules
+video
+scripts/.rec-tmp
+backend/cdk.out
+backend/.local
+.local
+web/dist
+.vercel/output
