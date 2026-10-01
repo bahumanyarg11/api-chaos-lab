@@ -4,7 +4,11 @@ import { C, inter, mono } from "../theme";
 import { clamp, GradientText, Kicker, SceneShell, useSpringIn } from "../components/ui";
 import type { SceneTiming } from "../timing";
 
-export const ARCH_BEATS = { client: 0.04, edge: 0.13, api: 0.23, lambdas: 0.3, data: 0.48, bedrock: 0.57, cw: 0.66, term: 0.73, fail: 0.93 };
+import { ARCH_BEATS } from "../audio-plan.mjs";
+import config from "../../config.json";
+
+const LIVE_URL = String((config as { liveUrl?: string }).liveUrl || "chaoslab.app").replace(/^https?:\/\//, "").replace(/\/$/, "");
+const PROJECT_ID = "jtqavpxsis";
 
 const NODE_W = 252;
 const NODE_H = 104;
@@ -135,7 +139,7 @@ const Node: React.FC<{ n: NodeDef; delay: number }> = ({ n, delay }) => {
 };
 
 const TERM_LINES: { text: string; color: string }[] = [
-  { text: "▸ chaos endpoint  https://api.chaoslab.app/c/demo-shop", color: C.muted },
+  { text: `▸ chaos endpoint  https://${LIVE_URL}/x/${PROJECT_ID}`, color: C.muted },
   { text: "▸ profile         payments-hardening · 8 faults", color: C.muted },
   { text: "✓ GET  /products   latency +2s       handled", color: C.mint },
   { text: "✓ GET  /users      malformed_json    handled", color: C.mint },
@@ -147,7 +151,7 @@ const TERM_LINES: { text: string; color: string }[] = [
 const Terminal: React.FC<{ delay: number; failAt: number }> = ({ delay, failAt }) => {
   const frame = useCurrentFrame();
   const p = useSpringIn(delay, { damping: 18, stiffness: 120 });
-  const cmd = "npx chaoslab run --project demo-shop -- npm test";
+  const cmd = `npx chaoslab run --project ${PROJECT_ID} -- npm test`;
   const typed = Math.max(0, Math.min(cmd.length, Math.floor(((frame - delay - 8) / 30) * 42)));
   const cmdDone = delay + 8 + Math.ceil((cmd.length / 42) * 30);
   const span = Math.max(TERM_LINES.length * 4, failAt - cmdDone - 6);

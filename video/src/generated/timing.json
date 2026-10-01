@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-01T04:17:00.851Z",
+  "generatedAt": "2026-10-01T04:47:15.009Z",
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "totalFrames": 4430,
-  "totalSec": 147.67,
-  "liveUrl": "chaoslab.app",
+  "totalFrames": 4615,
+  "totalSec": 153.83,
+  "liveUrl": "api-chaos-lab.vercel.app",
   "musicVolumeDb": -24,
   "scenes": [
     {
@@ -45,29 +45,32 @@
     {
       "id": "demo-landing",
       "from": 1111,
-      "frames": 225,
+      "frames": 180,
       "vo": {
         "file": "vo/demo-landing.wav",
         "offset": 9,
-        "frames": 134
+        "frames": 146
       },
       "rec": {
         "file": "rec/01-landing.mp4",
+        "sourceSec": 58.4,
+        "startSec": 1.5,
+        "startFrame": 45,
         "durationSec": 12,
         "size": {
           "width": 1600,
           "height": 1000
         },
-        "playbackRate": 1.6,
-        "playFrames": 225,
+        "playbackRate": 2,
+        "playFrames": 180,
         "freezeFrames": 0,
         "trimmedSec": 0
       }
     },
     {
       "id": "demo-upload",
-      "from": 1336,
-      "frames": 227,
+      "from": 1291,
+      "frames": 245,
       "vo": {
         "file": "vo/demo-upload.wav",
         "offset": 9,
@@ -75,21 +78,24 @@
       },
       "rec": {
         "file": "rec/02-upload.mp4",
-        "durationSec": 12,
+        "sourceSec": 16.366,
+        "startSec": 0,
+        "startFrame": 0,
+        "durationSec": 16.366,
         "size": {
           "width": 1600,
           "height": 1000
         },
-        "playbackRate": 1.5842,
-        "playFrames": 227,
+        "playbackRate": 2,
+        "playFrames": 245,
         "freezeFrames": 0,
-        "trimmedSec": 0.01
+        "trimmedSec": 0.03
       }
     },
     {
       "id": "demo-matrix",
-      "from": 1563,
-      "frames": 328,
+      "from": 1536,
+      "frames": 336,
       "vo": {
         "file": "vo/demo-matrix.wav",
         "offset": 9,
@@ -97,64 +103,73 @@
       },
       "rec": {
         "file": "rec/03-matrix.mp4",
-        "durationSec": 12,
+        "sourceSec": 22.367,
+        "startSec": 0,
+        "startFrame": 0,
+        "durationSec": 22.367,
         "size": {
           "width": 1600,
           "height": 1000
         },
-        "playbackRate": 1.0974,
-        "playFrames": 328,
+        "playbackRate": 2,
+        "playFrames": 336,
         "freezeFrames": 0,
         "trimmedSec": 0
       }
     },
     {
       "id": "demo-live",
-      "from": 1891,
-      "frames": 225,
+      "from": 1872,
+      "frames": 255,
       "vo": {
         "file": "vo/demo-live.wav",
         "offset": 9,
-        "frames": 157
+        "frames": 202
       },
       "rec": {
         "file": "rec/04-live.mp4",
-        "durationSec": 12,
+        "sourceSec": 21.966,
+        "startSec": 0,
+        "startFrame": 0,
+        "durationSec": 17,
         "size": {
           "width": 1600,
           "height": 1000
         },
-        "playbackRate": 1.6,
-        "playFrames": 225,
+        "playbackRate": 2,
+        "playFrames": 255,
         "freezeFrames": 0,
         "trimmedSec": 0
       }
     },
     {
       "id": "demo-playground",
-      "from": 2116,
-      "frames": 225,
+      "from": 2127,
+      "frames": 334,
       "vo": {
         "file": "vo/demo-playground.wav",
         "offset": 9,
-        "frames": 183
+        "frames": 308
       },
       "rec": {
         "file": "rec/05-playground.mp4",
-        "durationSec": 12,
+        "sourceSec": 26.066,
+        "startSec": 4.515,
+        "startFrame": 135,
+        "durationSec": 21.566,
         "size": {
           "width": 1600,
           "height": 1000
         },
-        "playbackRate": 1.6,
-        "playFrames": 225,
+        "playbackRate": 1.9358,
+        "playFrames": 334,
         "freezeFrames": 0,
-        "trimmedSec": 0
+        "trimmedSec": 0.01
       }
     },
     {
       "id": "differentiator",
-      "from": 2341,
+      "from": 2461,
       "frames": 663,
       "vo": {
         "file": "vo/differentiator.wav",
@@ -164,30 +179,33 @@
     },
     {
       "id": "demo-report",
-      "from": 3004,
-      "frames": 225,
+      "from": 3124,
+      "frames": 293,
       "vo": {
         "file": "vo/demo-report.wav",
         "offset": 9,
-        "frames": 184
+        "frames": 199
       },
       "rec": {
         "file": "rec/06-report.mp4",
-        "durationSec": 12,
+        "sourceSec": 22.733,
+        "startSec": 0,
+        "startFrame": 0,
+        "durationSec": 19.5,
         "size": {
           "width": 1600,
           "height": 1000
         },
-        "playbackRate": 1.6,
-        "playFrames": 225,
+        "playbackRate": 2,
+        "playFrames": 293,
         "freezeFrames": 0,
         "trimmedSec": 0
       }
     },
     {
       "id": "demo-integrate",
-      "from": 3229,
-      "frames": 225,
+      "from": 3417,
+      "frames": 222,
       "vo": {
         "file": "vo/demo-integrate.wav",
         "offset": 9,
@@ -195,20 +213,23 @@
       },
       "rec": {
         "file": "rec/07-integrate.mp4",
-        "durationSec": 12,
+        "sourceSec": 14.767,
+        "startSec": 0,
+        "startFrame": 0,
+        "durationSec": 14.767,
         "size": {
           "width": 1600,
           "height": 1000
         },
-        "playbackRate": 1.6,
-        "playFrames": 225,
+        "playbackRate": 2,
+        "playFrames": 222,
         "freezeFrames": 0,
         "trimmedSec": 0
       }
     },
     {
       "id": "architecture",
-      "from": 3454,
+      "from": 3639,
       "frames": 736,
       "vo": {
         "file": "vo/architecture.wav",
@@ -218,12 +239,12 @@
     },
     {
       "id": "outro",
-      "from": 4190,
+      "from": 4375,
       "frames": 240,
       "vo": {
         "file": "vo/outro.wav",
         "offset": 11,
-        "frames": 116
+        "frames": 115
       },
       "hf": {
         "file": "hf/outro.mp4",
@@ -246,43 +267,43 @@
     ],
     [
       1120,
-      1254
+      1266
     ],
     [
-      1345,
-      1546
+      1300,
+      1501
     ],
     [
-      1572,
-      1859
+      1545,
+      1832
     ],
     [
-      1900,
-      2057
+      1881,
+      2083
     ],
     [
-      2125,
-      2308
+      2136,
+      2444
     ],
     [
-      2350,
-      2932
+      2470,
+      3052
     ],
     [
-      3013,
-      3197
+      3133,
+      3332
     ],
     [
-      3238,
-      3417
+      3426,
+      3605
     ],
     [
-      3463,
-      4125
+      3648,
+      4310
     ],
     [
-      4201,
-      4317
+      4386,
+      4501
     ]
   ]
 }

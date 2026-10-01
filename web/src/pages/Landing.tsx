@@ -238,7 +238,7 @@ npx chaoslab run --project <projectId> --min-score 80 -- npm test`}
           <p className="mx-auto mt-4 max-w-2xl text-muted">Two minutes: an OpenAPI spec becomes an AI chaos matrix, a naive client gets an F, a resilient client gets an A, and Bedrock writes the fix.</p>
         </motion.div>
         <motion.div {...fade} className="chaos-border mt-10 overflow-hidden rounded-2xl">
-          <video className="aspect-video w-full bg-black" src="/demo.mp4" poster="/poster.png" controls preload="metadata" playsInline />
+          <video className="aspect-video w-full bg-black" src="/demo.mp4" poster="/poster.jpg" controls preload="metadata" playsInline />
         </motion.div>
         <div className="mt-6 text-center">
           <Link to="/app/new">

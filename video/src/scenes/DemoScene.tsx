@@ -35,6 +35,7 @@ const Recording: React.FC<{ t: SceneTiming }> = ({ t }) => {
       src={src}
       muted
       playbackRate={t.rec.playbackRate}
+      trimBefore={t.rec.startFrame > 0 ? t.rec.startFrame : undefined}
       pauseWhenBuffering
       style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }}
     />

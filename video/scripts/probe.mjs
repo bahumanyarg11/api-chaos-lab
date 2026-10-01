@@ -2,9 +2,11 @@
 // writes src/generated/timing.json, which drives every scene length in the Remotion edit.
 //
 // Scene length = lead-in + narration + padding (+ optional per-scene hold).
-// Demo scenes fit their recording into that window: playbackRate is clamped to
+// Demo scenes fit their recording into that window: optional `recStart`/`recEnd` (seconds, in
+// narration/script.json) pick a sub-range of the source; playbackRate is clamped to
 // [playbackRateMin, playbackRateMax] (config.json); if the clip is still too long the scene
-// stretches up to +MAX_DEMO_STRETCH s, then the clip is trimmed; if too short, the last frame freezes.
+// stretches up to +maxDemoStretchSec, then the clip is trimmed (from the end, or from the start when
+// `recAnchor: "end"`); if too short, the last frame freezes.
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
@@ -18,7 +20,7 @@ const FPS = 30;
 const PAD = config.scenePaddingSec ?? 0.6;
 const RATE_MIN = config.playbackRateMin ?? 0.75;
 const RATE_MAX = config.playbackRateMax ?? 1.6;
-const MAX_DEMO_STRETCH = 3.0;
+const MAX_DEMO_STRETCH = config.maxDemoStretchSec ?? 4.0;
 
 // lead-in before the voice starts, and extra hold after it, per scene (seconds)
 const LEAD = { intro: 0.4, outro: 0.35 };
@@ -72,25 +74,33 @@ for (const entry of script) {
 
   if (entry.rec) {
     const recRel = `rec/${entry.rec}`;
-    const recSec = probeDuration(recRel);
-    if (recSec == null) {
+    const srcSec = probeDuration(recRel);
+    if (srcSec == null) {
       console.warn(`[probe] missing recording ${recRel}`);
       scene.rec = null;
     } else {
+      const winStart = Math.max(0, Math.min(srcSec - 1, entry.recStart ?? 0));
+      const winEnd = Math.max(winStart + 1, Math.min(srcSec, entry.recEnd ?? srcSec));
+      const recSec = winEnd - winStart;
       let sceneSec = base;
       if (recSec / RATE_MAX > sceneSec) sceneSec = Math.min(recSec / RATE_MAX, base + MAX_DEMO_STRETCH);
       const rate = Math.min(RATE_MAX, Math.max(RATE_MIN, recSec / sceneSec));
       const playSec = Math.min(sceneSec, recSec / rate);
       scene.frames = f(sceneSec);
       const playFrames = Math.min(scene.frames, Math.round(playSec * FPS));
+      const trimmed = Math.max(0, recSec - (playFrames / FPS) * rate);
+      const startSec = entry.recAnchor === "end" ? winStart + trimmed : winStart;
       scene.rec = {
         file: recRel,
+        sourceSec: +srcSec.toFixed(3),
+        startSec: +startSec.toFixed(3),
+        startFrame: Math.round(startSec * FPS),
         durationSec: +recSec.toFixed(3),
         size: probeSize(recRel),
         playbackRate: +rate.toFixed(4),
         playFrames,
         freezeFrames: scene.frames - playFrames,
-        trimmedSec: +Math.max(0, recSec - (playFrames / FPS) * rate).toFixed(2),
+        trimmedSec: +trimmed.toFixed(2),
       };
     }
   }
@@ -118,6 +128,6 @@ fs.writeFileSync(path.join(outDir, "timing.json"), JSON.stringify(timing, null, 
 
 console.log(`[probe] ${scenes.length} scenes · ${timing.totalSec}s (${cursor} frames @ ${FPS}fps)`);
 for (const s of scenes) {
-  const extra = s.rec ? ` rec ${s.rec.durationSec}s @${s.rec.playbackRate}x${s.rec.freezeFrames ? ` +freeze ${(s.rec.freezeFrames / FPS).toFixed(1)}s` : ""}${s.rec.trimmedSec ? ` (trim ${s.rec.trimmedSec}s)` : ""}` : "";
+  const extra = s.rec ? ` rec ${s.rec.startSec}s+${s.rec.durationSec}s of ${s.rec.sourceSec}s @${s.rec.playbackRate}x${s.rec.freezeFrames ? ` +freeze ${(s.rec.freezeFrames / FPS).toFixed(1)}s` : ""}${s.rec.trimmedSec ? ` (trim ${s.rec.trimmedSec}s)` : ""}` : "";
   console.log(`  ${s.id.padEnd(16)} ${(s.frames / FPS).toFixed(2).padStart(6)}s${extra}`);
 }

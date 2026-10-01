@@ -27,10 +27,10 @@ log "2/5 HyperFrames segments"
 VARS="$ROOT/out/.hf-variables.json"
 node -e 'const c=require("./config.json");require("fs").writeFileSync(process.argv[1],JSON.stringify({liveUrl:String(c.liveUrl||"chaoslab.app")}))' "$VARS"
 hash_of () { cat "$@" | shasum | cut -d" " -f1; }
-render_hf () {  # name, extra args...
-  local name="$1"; shift
+render_hf () {  # name, uses-vars(0/1), extra args...
+  local name="$1" usesvars="$2"; shift 2
   local out="public/hf/$name.mp4" stamp="public/hf/.$name.hash"
-  local h; h="$(hash_of hyperframes/$name/index.html "$VARS")"
+  local h; if [[ "$usesvars" == 1 ]]; then h="$(hash_of hyperframes/$name/index.html "$VARS")"; else h="$(hash_of hyperframes/$name/index.html)"; fi
   if [[ -z "${FORCE_HF:-}" && -s "$out" && -f "$stamp" && "$(cat "$stamp")" == "$h" ]]; then
     echo "[hf] $name up to date"; return 0
   fi
@@ -42,8 +42,8 @@ render_hf () {  # name, extra args...
     if [[ -s "$out" ]]; then echo "[hf] keeping previous $out"; else echo "[hf] Remotion fallback scene will be used"; fi
   fi
 }
-render_hf intro
-render_hf outro --variables-file "$VARS"
+render_hf intro 0
+render_hf outro 1 --variables-file "$VARS"
 
 log "3/5 Probe durations"
 node scripts/probe.mjs

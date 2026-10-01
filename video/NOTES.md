@@ -57,11 +57,18 @@ was about to fill the disk, so it was stopped. `scripts/remotion-render.mjs` ins
 1. bundles once (`@remotion/bundler`, temp dir, deleted afterwards),
 2. renders muted 300-frame chunks with `renderMedia({ frameRange })` (each chunk's frames are deleted
    after encoding), h264 CRF 18,
-3. renders the full audio mix once as WAV (`codec: "wav"`),
+3. mixes the soundtrack with ffmpeg (`scripts/mix-audio.mjs`) from the same cue sheet the
+   composition uses (`src/audio-plan.mjs`). Remotion's own audio-only pass (`codec: "wav"`) was tried
+   first: it took ~3 min and briefly needed ~400 MB of temp disk (free space dipped to ~120 MB);
+   the ffmpeg mix takes < 1 s and produces the same levels (−19.7 dB mean / −4.4 dB peak),
 4. concatenates the chunks with ffmpeg's concat demuxer (`-c:v copy`, no re-encode) and muxes AAC,
 5. renders the poster still with the same browser.
 
-Peak extra disk use ≈ 400 MB. Knobs: `CHUNK_FRAMES`, `CONCURRENCY`, `CRF`. On a machine with plenty
+Chunks are 120 frames: besides the JPEGs (~25 MB per chunk), each headless Chrome tab holds
+deleted-but-open shared-memory files (`$TMPDIR/.org.chromium.Chromium.*`, ~40 MB each) that are only
+released when the chunk's pages close — they caused transient dips of 150–300 MB and one `ENOSPC`
+with 300-frame chunks. The script also refuses to start a chunk with < `MIN_FREE_MB` (250) free.
+Peak extra disk use ≈ 300 MB. Knobs: `CHUNK_FRAMES`, `CONCURRENCY`, `CRF`. On a machine with plenty
 of disk the plain `npx remotion render src/index.ts ChaosLabDemo out/chaoslab-demo.mp4 --codec=h264 --crf=18`
 produces the same result.
 
@@ -75,4 +82,9 @@ produces the same result.
   −20 LUFS and mixed at −24 dB relative to the voice (gain 0.1), opening to ~0.18 between lines.
 * Disk is tight on this machine (~0.6 GB free while building): a full render needs ~400–500 MB of
   headroom. Free space before re-rendering if possible.
-* A full render takes ~11 min on the M4 (≈ 7 min video chunks, ≈ 3 min audio mix pass).
+* A full render takes ~8–10 min on the M4 (video chunks; the audio mix is < 1 s).
+* Real recordings (`public/rec/`) are 1600×1000 @ 30 fps; long ones are sub-ranged and played at up
+  to 2× (see `recStart`/`recEnd`/`recAnchor` in `narration/script.json`, fit printed by probe.mjs).
+* HyperFrames renders must not be killed by their parent shell: `scripts/hf-render.mjs` sets
+  `HYPERFRAMES_RENDER_DETACHED=1` (otherwise a backgrounded render aborts with
+  `render_cancelled_parent_exited`).

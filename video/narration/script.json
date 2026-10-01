@@ -16,8 +16,9 @@
   {
     "scene": "demo-landing",
     "rec": "01-landing.mp4",
-    "text": "Here's the real app, running on AWS. Create a project in a few seconds.",
-    "speak": "Here's the real app, running on A W S. Create a project in a few seconds."
+    "text": "Here's the real app. From the landing page, you can start chaos testing in seconds.",
+    "recStart": 1.5,
+    "recEnd": 13.5
   },
   {
     "scene": "demo-upload",
@@ -34,12 +35,16 @@
   {
     "scene": "demo-live",
     "rec": "04-live.mp4",
-    "text": "Point your app at the chaos endpoint, and watch live traffic as faults are injected in real time."
+    "text": "Point your app at the chaos endpoint, and watch live traffic as faults are injected in real time, request by request.",
+    "recEnd": 17
   },
   {
     "scene": "demo-playground",
     "rec": "05-playground.mp4",
-    "text": "In the playground, a naive client and a resilient client face the exact same chaos, side by side."
+    "text": "In the playground, a naive client and a resilient client face the exact same chaos, side by side. Same faults, same seed. Then ChaosLab delivers the verdict.",
+    "speak": "In the playground, a naive client and a resilient client face the exact same chaos, side by side. Same faults, same seed. Then Chaos Lab delivers the verdict.",
+    "recStart": 4.5,
+    "recAnchor": "end"
   },
   {
     "scene": "differentiator",
@@ -49,7 +54,8 @@
   {
     "scene": "demo-report",
     "rec": "06-report.mp4",
-    "text": "Every run ends in a resilience report: a score, each finding explained by Bedrock, and the code to fix it."
+    "text": "Every run ends in a resilience report: a score, each finding explained by Bedrock, and AI-written code to fix it.",
+    "recEnd": 19.5
   },
   {
     "scene": "demo-integrate",

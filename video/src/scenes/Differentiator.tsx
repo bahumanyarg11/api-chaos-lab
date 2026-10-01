@@ -4,8 +4,8 @@ import { C, inter, mono } from "../theme";
 import { clamp, GlitchText, GradientText, Kicker, Panel, SceneShell, useSpringIn } from "../components/ui";
 import type { SceneTiming } from "../timing";
 
-// narration beats (fraction of the voice-over) — also used for SFX in ChaosLabDemo
-export const DIFF_BEATS = { lanes: 0.17, storm: 0.42, retryAfter: 0.56, post: 0.7, end: 0.78, alert: 0.66, dialF: 0.8, dialA: 0.89 };
+// narration beats (fraction of the voice-over) — shared with the soundtrack
+import { DIFF_BEATS } from "../audio-plan.mjs";
 
 type Ev = { t: number; kind: "dot" | "tick"; color: string; label?: string; below?: boolean };
 type Win = { t1: number; t2: number; label: string; color: string };

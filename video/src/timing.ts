@@ -8,6 +8,9 @@ export type SceneTiming = {
   hf?: { file: string; frames: number } | null;
   rec?: {
     file: string;
+    sourceSec: number;
+    startSec: number;
+    startFrame: number;
     durationSec: number;
     playbackRate: number;
     playFrames: number;
